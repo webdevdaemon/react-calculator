@@ -1,0 +1,69 @@
+.Button {
+	border: 1px solid #fff;
+	display: flex;
+	font-family: 'bungee';
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+}
+
+.Button .ButtonNum,
+.Button .ButtonOp {
+	border: 1px outset #fff;
+	border-radius: 10px;
+    display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 7vmin;
+	font-family: 'Bungee';
+	font-weight: 900;
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+}
+
+.Button .ButtonOp:hover,
+.Button .ButtonOp:focus,
+.Button .ButtonNum:hover,
+.Button .ButtonNum:focus {
+	box-shadow: 0 0 50px lightcyan;
+	background: lightcyan;
+	color: black !important;
+	overflow: hidden;
+	z-index: 100;
+}
+
+.Button .ButtonOp {
+	border-radius: 10px;
+	font-size: 7vmin;
+	overflow: hidden;
+}
+
+
+.Button .ButtonNum span {
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: inherit;
+}
+
+.Button .ButtonNum span:hover,
+.Button .ButtonNum span:focus {
+	background: lightcyan;
+	color: black !important;
+	z-index: 0;
+	transform: scale(1.4);
+	transition: all ease-out .25s;
+}
+
+.Button .ButtonNum span:active {
+	box-shadow: none;
+	background: #000;
+	color: lightcyan !important;
+	transform: scale(.75);
+	transition: all ease-in-out .15s;
+}

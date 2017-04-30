@@ -1,0 +1,10 @@
+.DisplayCurrent {
+	background: #eee;
+	display: flex;
+	font-family: 'aldrich';
+	font-size: 9vmin;
+	justify-content: flex-end;
+	align-items: center;
+	max-height: 66%;
+    height: 100%;
+}

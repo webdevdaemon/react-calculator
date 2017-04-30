@@ -1,0 +1,10 @@
+.Keypad {
+	border: 5px solid white;
+	box-sizing: border-box;
+
+	background: #eee;
+	display: flex;
+	justify-content: center;
+	height: 80%;
+	width: 100%;
+}

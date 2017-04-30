@@ -1,0 +1,70 @@
+div {
+	box-sizing: border-box;
+}
+
+.App {
+	border-radius: 10px;
+	box-sizing: border-box;
+	background: #000;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: right;
+	height: 95vh;
+	width: 100%;
+	max-width: 800px;
+	min-width: 320px;
+	overflow-y: hidden;
+	margin: auto;
+	padding: 12px;
+}
+
+.H2 {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: stretch;
+	height: 50%;
+}
+
+.H4 {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	height: 100%;
+}
+
+.W1 {
+	width: 20%;
+}
+
+.W3 {
+    width: calc(20%*3);
+}
+
+.display-wrap {
+    height: 100%;
+    max-height: 18vh;
+	margin: 0 0 12px 0;
+}
+
+/*BG COLOR CLASSES*/
+
+.bg-grey 	{ background: #444; color: white; }
+.bg-black 	{ background: black; /* color: white; */ }
+.bg-sky     { background: skyblue; /* color: black; */ }
+.bg-pink 	{ background: hotpink; /* color: black; */ }
+.bg-blue 	{ background: #0074d9; /* color: white; */ }
+.bg-magenta { background: #f012be; /* color: white; */ }
+.bg-red     { background: #ff4136; /* color: white; */ }
+.bg-green   { background: #2ecc40; /* color: white; */ }
+
+/*ICONS & IMAGES*/
+
+.icon-ops {
+	width: 7vmin;
+}
+
+.minus {
+	transform: rotate(90deg);
+}

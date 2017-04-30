@@ -1,0 +1,89 @@
+.IconFont,
+.IconFont span {
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: inherit;
+}
+
+.IconFont:hover,
+.IconFont:focus {
+	background: lightcyan;
+	color: black !important;
+	z-index: 0;
+	transform: scale(1.4);
+	transition: all ease-out .33s;
+}
+
+.IconFont:active {
+	box-shadow: none;
+	background: #000;
+	color: lightcyan !important;
+	transform: scale(.75);
+	transition: all ease-in-out .15s;
+}
+
+@font-face {
+  font-family: 'calcJS-icons';
+  src:  url('./fonts/calcJS-icons.eot?');
+  src:  url('./fonts/calcJS-icons.eot?6k0tn7#iefix') format('embedded-opentype'),
+    url('./fonts/calcJS-icons.ttf?6k0tn7') format('truetype'),
+    url('./fonts/calcJS-icons.woff?6k0tn7') format('woff'),
+    url('./fonts/calcJS-icons.svg?6k0tn7#calcJS-icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'calcJS-icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: inherit;
+}
+
+.icon-AC:before {
+  content: "\e900";
+}
+.icon-CE:before {
+  content: "\e901";
+}
+.icon-decimal:before {
+  content: "\e902";
+}
+.icon-divide:before {
+  content: "\e903";
+}
+.icon-equals:before {
+  content: "\e904";
+}
+.icon-minus:before {
+  content: "\e905";
+}
+.icon-multiply:before {
+  content: "\e906";
+}
+.icon-plus-minus:before {
+  content: "\e907";
+}
+.icon-plus:before {
+  content: "\e908";
+}
+
+/*minus icon rotation fix*/
+.icon-minus {
+	transform: rotate(90deg);
+}
