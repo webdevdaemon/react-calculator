@@ -4,11 +4,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 class DisplayCurrent extends React.Component {
-	
+
 	render() {
 		return (
 			<div className="DisplayCurrent">
-				<p>{this.props.display}</p>
+				<p>{return (this.props.display === '0') {}}</p>
 			</div>
 		)
 	}

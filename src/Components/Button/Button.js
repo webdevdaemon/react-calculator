@@ -9,20 +9,31 @@ const Button = (props) => (
 			(props.type === 'operator') ? (
 				<div
 					className={`ButtonOp ${props.childClass}`}
-					pressOperator={props.pressOperator}
-				>{props.children}</div>
+					onClick={
+						() => {
+							props.pressOperator(props.keyValue)
+							console.log(props.keyValue)
+						}
+					}
+				>
+					{props.opIcon}
+				</div>
 			) :	(
 				<div
 					className={`ButtonNum ${props.childClass}`}
-					pressNumber={props.pressNumber}
-				><span>{props.keyValue}</span>
+					onClick={() => { props.pressNumber(props.keyValue); console.log(props.keyValue);}}
+				>
+					<span>{props.keyValue}</span>
 				</div>
 			)
 		}
 	</div>
 )
 
+
+
 Button.propTypes = {
+	opIcon: PropTypes.node,
 	keyValue: PropTypes.string,
 	childClass: PropTypes.string,
 	children: PropTypes.any,

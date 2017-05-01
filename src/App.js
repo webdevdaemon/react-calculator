@@ -13,28 +13,33 @@ class App extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
+			currentNumber: [],
 			display: '0',
 			history: '0',
-			equation: [0],
+			equation: [],
 			currentOperator: ''
 		}
-		this.pressNumber = this.pressNumber.bind(this)
-		this.pressOperator = this.pressOperator.bind(this)
-
-	}
-
-	pressNumber(e) {
-		console.log(this.state.display)
-		let nextNum = e.target.props.keyValue
-		this.setState({display: this.state.display.concat(nextNum)}, () => {console.log(this.state.display)})
 	}
 
 
-	pressOperator(e) {
-		console.log(this.state.display)
-		let nextOp = e.target.props.keyValue
-		this.setState({display: this.state.display.concat(nextOp)}, () => {console.log(this.state.display)})
+
+	_pushDisplayValueToHistory = (displayValue) => {
+		this.setState({history: this.state.history.push(this.state.display)})
 	}
+
+	pressNumber = (newNum, oldNum) => {
+		if (oldNum === '0') {this.setState}
+		this.setState({display: this.state.display.concat(number)}, () => {console.log(this.state.display)})
+	}
+
+
+	pressOperator = (operator) => {
+		this.setState({})
+		this.setState({display: operator}, () => {console.log(this.state.display)})
+	}
+
+
+
 
 	render() {
 		return (
@@ -75,31 +80,57 @@ class App extends Component {
 						</Horizontal>
 
 						<Horizontal pressOperator={this.pressOperator} pressNumber={this.pressNumber}>
-							<Button type='operator' className='Button' childClass='bg-black' keyValue='.'>
-								<IconFont color='white' icon='decimal' />
-							</Button>
+
+							<Button
+								type='operator'
+								className='Button'
+								childClass='bg-black'
+								opIcon={<IconFont color='white' icon='decimal' />}
+								keyValue='.'
+							/>
 							<Button className='Button' childClass='bg-grey' keyValue='0' />
-							<Button type='operator' className='Button' childClass='bg-black' keyValue='+/-'>
-								<IconFont color='white' icon='plus-minus' />
-							</Button>
+							<Button
+								type='operator'
+								className='Button'
+								childClass='bg-black'
+								opIcon={<IconFont color='white' icon='plus-minus' />}
+								keyValue='_'
+							/>
+
 						</Horizontal>
 					</div>
 
 					<div className='H4 W1'>
 
 						<Vertical pressOperator={this.pressOperator}>
-							<Button type='operator' className='Button' childClass='bg-sky' keyValue='+'>
-								<IconFont color='white' icon='plus' />
-							</Button>
-							<Button type='operator' className='Button' childClass='bg-pink' keyValue='-'>
-								<IconFont color='white' icon='minus' />
-							</Button>
-							<Button type='operator' className='Button' childClass='bg-blue' keyValue='x'>
-								<IconFont color='white' icon='multiply' />
-							</Button>
-							<Button type='operator' className='Button' childClass='bg-magenta' keyValue='/'>
-								<IconFont color='white' icon='divide' />
-							</Button>
+							<Button
+								type='operator'
+								className='Button'
+								childClass='bg-sky'
+								opIcon={<IconFont color='white' icon='plus'/>}
+								keyValue='+'
+							/>
+							<Button
+								type='operator'
+								className='Button'
+								childClass='bg-pink'
+								opIcon={<IconFont color='white' icon='minus' />}
+								keyValue='-'
+							/>
+							<Button
+								type='operator'
+								className='Button'
+								childClass='bg-blue'
+								opIcon={<IconFont color='white' icon='multiply' />}
+								keyValue='*'
+							/>
+							<Button
+								type='operator'
+								className='Button'
+								childClass='bg-magenta'
+								opIcon={<IconFont color='white' icon='divide' />}
+								keyValue='/'
+							/>
 						</Vertical>
 					</div>
 
@@ -108,21 +139,33 @@ class App extends Component {
 						<div className='H2'>
 
 							<Vertical pressOperator={this.pressOperator}>
-								<Button type='operator' className='Button' childClass='bg-red' keyValue='AC'>
-									<IconFont color='white' icon='AC' />
-								</Button>
-								<Button type='operator' className='Button' childClass='bg-red' keyValue='CE'>
-									<IconFont color='white' icon='CE' />
-								</Button>
+								<Button
+									type='operator'
+									className='Button'
+									childClass='bg-red'
+									opIcon={<IconFont color='white' icon='AC' />}
+									keyValue='AC'
+								/>
+								<Button
+									type='operator'
+									className='Button'
+									childClass='bg-red'
+									opIcon={<IconFont color='white' icon='CE' />}
+									keyValue='CE'
+								/>
 							</Vertical>
 						</div>
 
 						<div className='H2'>
 
 							<Vertical pressOperator={this.pressOperator}>
-								<Button type='operator' className='Button' childClass='bg-green' keyValue='='>
-									<IconFont color='white' icon='equals' />
-								</Button>
+								<Button
+									type='operator'
+									className='Button'
+									childClass='bg-green'
+									opIcon={<IconFont color='white' icon='equals' />}
+									keyValue='='
+								/>
 							</Vertical>
 						</div>
 					</div>

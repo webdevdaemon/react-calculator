@@ -19,6 +19,8 @@
 		"react": "^15.5.4",
 		"react-dom": "^15.5.4",
 		"react-icons": "^2.2.3",
+		"react-redux": "^5.0.4",
+		"redux": "^3.6.0",
 		"tern": "^0.21.0"
 	},
 	"scripts": {

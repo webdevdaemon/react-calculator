@@ -68,3 +68,25 @@ div {
 .minus {
 	transform: rotate(90deg);
 }
+
+/*@FONTFACE for CALCULATOR-digital-display fonts*/
+
+@font-face {
+	font-family: 'Digital-7 Mono';
+	src: url('./Fonts/hinted-Digital-7Mono.eot');
+	src: url('./Fonts/hinted-Digital-7Mono.eot?#iefix') format('embedded-opentype'),
+		url('./Fonts/hinted-Digital-7Mono.woff') format('woff'),
+		url('./Fonts/hinted-Digital-7Mono.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Digital-7 Italic';
+	src: url('./Fonts/hinted-Digital-7MonoItalic.eot');
+	src: url('./Fonts/hinted-Digital-7MonoItalic.eot?#iefix') format('embedded-opentype'),
+		url('./Fonts/hinted-Digital-7MonoItalic.woff') format('woff'),
+		url('./Fonts/hinted-Digital-7MonoItalic.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
