@@ -61,11 +61,11 @@ class App extends Component {
         }
     }
 
-    pressOperator = (operator) => {
+    pressOperator = ([operator]) => {
 		// if (currDisVal){
 			this._pushNumberToHistory(this.state.display)
         	this.setState({
-            	display: '0',
+            	display: [operator],
 				operator
         	}, () => {
             	console.log(this.state.display)
