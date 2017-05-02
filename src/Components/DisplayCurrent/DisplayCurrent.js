@@ -1,21 +1,20 @@
-import './DisplayCurrent.css'
+import "./DisplayCurrent.css"
 
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 
 class DisplayCurrent extends React.Component {
-
 	render() {
 		return (
 			<div className="DisplayCurrent">
-				<p>{return (this.props.display === '0') {}}</p>
+				<p>{this.props.display}</p>
 			</div>
 		)
 	}
 }
 
 DisplayCurrent.propTypes = {
-	display: PropTypes.string
+	display: PropTypes.string,
 }
 
 DisplayCurrent.defaultProps = {}

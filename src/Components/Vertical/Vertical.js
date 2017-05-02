@@ -3,21 +3,14 @@ import './Vertical.css'
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Vertical = ({pressOperator, children}) => (
+const Vertical = (props) => (
 	<div className="Vertical">
-		{
-			React.Children.map(children, (child) => {
-				return React.cloneElement(
-					child, {pressOperator}
-				)
-			})
-		}
+		{props.children}
 	</div>
 )
 
 Vertical.propTypes = {
-	children: PropTypes.node,
-	pressOperator: PropTypes.any,
+	children: PropTypes.node.isRequired,
 }
 
 Vertical.defaultProps = {}

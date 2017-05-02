@@ -6,18 +6,22 @@
 		"es6": true,
 		"node": true
 	},
-	"extends": ["eslint:recommended", "plugin:react/recommended"],
 	"parserOptions": {
+		"ecmaversion": 8,
 		"ecmaFeatures": {
 			"experimentalObjectRestSpread": true,
 			"jsx": true
 		},
 		"sourceType": "module"
 	},
-	"plugins": ["react"],
+	"plugins": [
+		"react"
+	],
 	"rules": {
+		"brace-style": 0,
 		"linebreak-style": 0,
 		"no-console": 0,
+		"no-undef": 0,
 		"indent": 0,
 		"react/jsx-closing-bracket-location": 1,
 		"react/jsx-indent-props": 0,
