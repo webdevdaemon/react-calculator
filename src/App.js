@@ -13,65 +13,47 @@ class App extends Component {
     constructor() {
         super()
         this.state = {
-            currentNumber: [],
-            display: '0',
-            history: '0',
-            equation: [],
-            operator: ''
+			history: [],
+			display: {current: '0', op: null},
+			eq:      [],
         }
     }
 
-    _pushNumberToHistory = (disVal, hist = this.state.history) => {
-		if (hist === '0') {
-            this.setState({
-                history: (disVal !== '0') ? disVal : '0',
-				equation: this.state.equation.push((disVal !== '0') ? disVal : '')
-            })
-        } else {
+	// _mergeObjectProperties = (target = {}, merge = {} ) => {
+	// 	if (typeof target === 'object' && typeof merge  === 'object') {
+	// 		return Object.assign(target, merge)
+	// 	} else {
+	// 		throw new Error(
+	// 			'Display State Merging Conflict: invalid input type',
+	// 			'must input javascript object'
+	// 		)
+	// 	}
+	// }
+
+	pressNumber = (numNew, numOld = this.state.display.current) => {
+		if (numOld === '0') {
 			this.setState({
-            	history: this.state.history.concat(disVal)
-	        }, () => {
-				console.log(`pushed ${disVal} to history. New History: ${this.state.history}`)
-			})
-		}
-    }
-
-	_pushOperatorToHistory = (operator, hist = this.state.history) => {
-		if (hist === '0') {
-            return
-        } else {
+				display: Object.assign(this.state.display, {current: numNew})
+			}, () => {console.log(this.state.display)})
+		} else {
 			this.setState({
-            	history: this.state.history.concat(operator)
-	        }, () => {
-				console.log(`pushed ${operator} to history. New History: ${this.state.history}`)
-			})
+				display: Object.assign(this.state.display, {current: numOld.concat(numNew)})
+			}, () => {console.log(this.state.display)})
 		}
-    }
+	}
 
-    pressNumber = (newNum, oldNum = this.state.display) => {
-        let dis = this.state.display
-        if (dis === '0') {
-            this.setState({
-                display: dis.slice(1, dis.length).concat(newNum)
-            })
-        } else {
-            this.setState({display: dis.concat(newNum)},
-				() => { console.log(dis) }
-			)
-        }
-    }
-
-    pressOperator = (operator) => {
-		// if (currDisVal){
-			this._pushNumberToHistory(this.state.display)
-        	this.setState({
-            	display: '0',
-				operator
-        	}, () => {
-            	console.log(this.state.display)
-        	})
-		// }
-    }
+	pressOperator = (op, currNum = this.state.display.current, currOp = this.state.display.op) => {
+		if (currNum !== '0') {
+			this.setState({
+				display: Object.assign(this.state.display, {op})
+			}, () => {console.log(this.state.display.op)} )
+		} else {
+			this.state.history.push(this.state.display.current)
+			this.setState({
+				display: Object.assign(this.state.display, {current: '0',op})
+			}, () => {console.log(this.state.display.op, this.state.display.current)} )
+		}
+	}
 
     render() {
         return (
@@ -109,9 +91,9 @@ class App extends Component {
 
                         <Horizontal>
 
-                            <Button type='operator' className='Button' childClass='bg-black' opIcon={< IconFont color = 'white' icon = 'decimal' />} keyValue='.' pressOperator={this.pressOperator}/>
+                            <Button type='operator' className='Button' childClass='bg-black' opIcon={<IconFont color='white' icon='decimal' />} keyValue='.' pressOperator={this.pressOperator}/>
                             <Button className='Button' childClass='bg-grey' keyValue='0' pressNumber={this.pressNumber}/>
-                            <Button type='operator' className='Button' childClass='bg-black' opIcon={< IconFont color = 'white' icon = 'plus-minus' />} keyValue='_' pressOperator={this.pressOperator}/>
+                            <Button type='operator' className='Button' childClass='bg-black' opIcon={<IconFont color='white' icon='plus-minus' />} keyValue='_' pressOperator={this.pressOperator}/>
 
                         </Horizontal>
                     </div>
@@ -119,10 +101,10 @@ class App extends Component {
                     <div className='H4 W1'>
 
                         <Vertical>
-                            <Button type='operator' className='Button' childClass='bg-sky' opIcon={< IconFont color = 'white' icon = 'plus' />} keyValue='+' pressOperator={this.pressOperator}/>
-                            <Button type='operator' className='Button' childClass='bg-pink' opIcon={< IconFont color = 'white' icon = 'minus' />} keyValue='-' pressOperator={this.pressOperator}/>
-                            <Button type='operator' className='Button' childClass='bg-blue' opIcon={< IconFont color = 'white' icon = 'multiply' />} keyValue='*' pressOperator={this.pressOperator}/>
-                            <Button type='operator' className='Button' childClass='bg-magenta' opIcon={< IconFont color = 'white' icon = 'divide' />} keyValue='/' pressOperator={this.pressOperator}/>
+                            <Button type='operator' className='Button' childClass='bg-sky' opIcon={<IconFont color='white' icon='plus' />} keyValue='+' pressOperator={this.pressOperator}/>
+                            <Button type='operator' className='Button' childClass='bg-pink' opIcon={<IconFont color='white' icon='minus' />} keyValue='-' pressOperator={this.pressOperator}/>
+                            <Button type='operator' className='Button' childClass='bg-blue' opIcon={<IconFont color='white' icon='multiply' />} keyValue='*' pressOperator={this.pressOperator}/>
+                            <Button type='operator' className='Button' childClass='bg-magenta' opIcon={<IconFont color='white' icon='divide' />} keyValue='/' pressOperator={this.pressOperator}/>
                         </Vertical>
                     </div>
 
@@ -131,15 +113,15 @@ class App extends Component {
                         <div className='H2'>
 
                             <Vertical pressOperator={this.pressOperator}>
-                                <Button type='operator' className='Button' childClass='bg-red' opIcon={< IconFont color = 'white' icon = 'AC' />} keyValue='AC' pressOperator={this.pressOperator}/>
-                                <Button type='operator' className='Button' childClass='bg-red' opIcon={< IconFont color = 'white' icon = 'CE' />} keyValue='CE' pressOperator={this.pressOperator}/>
+                                <Button type='operator' className='Button' childClass='bg-red' opIcon={<IconFont color='white' icon='AC' />} keyValue='AC' pressOperator={this.pressOperator}/>
+                                <Button type='operator' className='Button' childClass='bg-red' opIcon={<IconFont color='white' icon='CE' />} keyValue='CE' pressOperator={this.pressOperator}/>
                             </Vertical>
                         </div>
 
                         <div className='H2'>
 
                             <Vertical pressOperator={this.pressOperator}>
-                                <Button type='operator' className='Button' childClass='bg-green' opIcon={< IconFont color = 'white' icon = 'equals' />} keyValue='=' pressOperator={this.pressOperator}/>
+                                <Button type='operator' className='Button' childClass='bg-green' opIcon={<IconFont color='white' icon='equals' />} keyValue='=' pressOperator={this.pressOperator}/>
                             </Vertical>
                         </div>
                     </div>

@@ -7,7 +7,7 @@ class DisplayCurrent extends React.Component {
 	render() {
 		return (
 			<div className="DisplayCurrent">
-				<p>{this.props.display}</p>
+				<p>{this.props.display.current.toString()}</p>
 			</div>
 		)
 	}

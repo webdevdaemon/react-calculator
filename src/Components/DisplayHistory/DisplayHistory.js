@@ -3,9 +3,9 @@ import './DisplayHistory.css'
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const DisplayHistory = (props) => (
+const DisplayHistory = ({history}) => (
 	<div className="DisplayHistory">
-		<p>{props.history}</p>
+		<p>{((history[1]) ? history.join() : 0 ).toString()}</p>
 	</div>
 )
 

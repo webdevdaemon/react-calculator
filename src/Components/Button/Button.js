@@ -12,7 +12,6 @@ class Button extends Component {
 	}
 
 	render() {
-		console.log(this.state);
 		return (
 			<div className="Button">
 				{
@@ -22,7 +21,6 @@ class Button extends Component {
 							onClick={
 								() => {
 									this.props.pressOperator(this.props.keyValue)
-									console.log(this.props.keyValue)
 								}
 							}
 						>
