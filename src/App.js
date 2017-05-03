@@ -9,77 +9,30 @@ import Button from './Components/Button/index.js'
 import './App.css'
 import IconFont from './Components/IconFont/index'
 
-import simpleMath from './Modules/simpleMath'
+// import simpleMath from './Modules/simpleMath'
 
 class App extends Component {
     constructor() {
         super()
         this.state = {
-			history: {log: [], acc: 0},
-			display: {current: '0', accum:[], op: null},
-			eq:      [],
+			view: '0',
+			log: ['0']
         }
     }
-	//
-	// dis = this.state.display
-	// dis_curr = this.state.display.current
-	// dis_accum = this.state.display.accum
-	// dis_op = this.state.display.op
 
+	pressNum = () => {
+
+	}
+
+	pressOp = () => {
+
+	}
 
 	aC = () => {
-		this.setState({
-			display: {
-				current: '0',
-				accum:[],
-				op: null
-			}
-		}, () => { console.log('ALL CLEAR') })
-	}
-
-	cE = () => {
-		this.setState({
-			display: Object.assign(
-				this.state.display,
-				{
-					curr: '0'
-				})
-			}, () => { console.log('CLEAR ENTRY') }
-		)
-	}
-
-
-	updateDisplayObject = (mergingObject, displayObject = this.state.display) => {
 
 	}
 
-	pressNumber = (numNew, numOld = this.state.display.current) => {
-		if (numOld === '0') {
-			this.setState({
-				display: Object.assign(this.state.display, {current: numNew})
-			}, () => {console.log(this.state.display)})
-		} else {
-			this.setState({
-				display: Object.assign(this.state.display, {current: numOld.concat(numNew)})
-			}, () => {console.log(this.state.display)})
-		}
-	}
-
-	pressOperator = (nextOp, displayObject = this.state.display) => {
-		let {current: curr, accum: accu, op: oper} = displayObject
-		console.log(nextOp, curr, accum, op);
-		if (currNum !== '0') {
-			this.setState({
-				display: Object.assign(
-					{ op, accum: accum.push(this.state.display.curr)})
-			}, () => {console.log(this.state.display.op)} )
-		} else {
-			this.state.history.push(this.state.display.current)
-			this.setState({
-				display: Object.assign(this.state.display, {current: '0',op})
-			}, () => {console.log(this.state.display.op, this.state.display.current)} )
-		}
-	}
+	
 
     render() {
         return (
@@ -88,8 +41,8 @@ class App extends Component {
                 <div className="display-wrap">
 
                     <DigitalDisplay>
-                        <DisplayCurrent display={this.state.display}/>
-                        <DisplayHistory history={this.state.history}/>
+                        <DisplayCurrent display={this.state.view} />
+                        <DisplayHistory history={this.state.log}  />
                     </DigitalDisplay>
                 </div>
 
@@ -120,7 +73,6 @@ class App extends Component {
                             <Button type='operator' className='Button' childClass='bg-black' opIcon={<IconFont color='white' icon='decimal' />} keyValue='.' pressOperator={this.pressOperator}/>
                             <Button className='Button' childClass='bg-grey' keyValue='0' pressNumber={this.pressNumber}/>
                             <Button type='operator' className='Button' childClass='bg-black' opIcon={<IconFont color='white' icon='plus-minus' />} keyValue='_' pressOperator={this.pressOperator}/>
-
                         </Horizontal>
                     </div>
 
@@ -139,8 +91,8 @@ class App extends Component {
                         <div className='H2'>
 
                             <Vertical pressOperator={this.pressOperator}>
-                                <Button type='operator' className='Button' childClass='bg-red' opIcon={<IconFont color='white' icon='AC' />} keyValue='AC' pressOperator={this.aC}/>
-                                <Button type='operator' className='Button' childClass='bg-red' opIcon={<IconFont color='white' icon='CE' />} keyValue='CE' pressOperator={this.cE}/>
+                                <Button type='operator' className='Button' childClass='bg-red' opIcon={<IconFont color='white' icon='AC' />} keyValue='AC' pressOperator={this.pressOperator}/>
+                                <Button type='operator' className='Button' childClass='bg-red' opIcon={<IconFont color='white' icon='CE' />} keyValue='CE' pressOperator={this.pressOperator}/>
                             </Vertical>
                         </div>
 
