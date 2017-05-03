@@ -9,26 +9,49 @@ import Button from './Components/Button/index.js'
 import './App.css'
 import IconFont from './Components/IconFont/index'
 
+import simpleMath from './Modules/simpleMath'
+
 class App extends Component {
     constructor() {
         super()
         this.state = {
-			history: [],
-			display: {current: '0', op: null},
+			history: {log: [], acc: 0},
+			display: {current: '0', accum:[], op: null},
 			eq:      [],
         }
     }
+	//
+	// dis = this.state.display
+	// dis_curr = this.state.display.current
+	// dis_accum = this.state.display.accum
+	// dis_op = this.state.display.op
 
-	// _mergeObjectProperties = (target = {}, merge = {} ) => {
-	// 	if (typeof target === 'object' && typeof merge  === 'object') {
-	// 		return Object.assign(target, merge)
-	// 	} else {
-	// 		throw new Error(
-	// 			'Display State Merging Conflict: invalid input type',
-	// 			'must input javascript object'
-	// 		)
-	// 	}
-	// }
+
+	aC = () => {
+		this.setState({
+			display: {
+				current: '0',
+				accum:[],
+				op: null
+			}
+		}, () => { console.log('ALL CLEAR') })
+	}
+
+	cE = () => {
+		this.setState({
+			display: Object.assign(
+				this.state.display,
+				{
+					curr: '0'
+				})
+			}, () => { console.log('CLEAR ENTRY') }
+		)
+	}
+
+
+	updateDisplayObject = (mergingObject, displayObject = this.state.display) => {
+
+	}
 
 	pressNumber = (numNew, numOld = this.state.display.current) => {
 		if (numOld === '0') {
@@ -42,10 +65,13 @@ class App extends Component {
 		}
 	}
 
-	pressOperator = (op, currNum = this.state.display.current, currOp = this.state.display.op) => {
+	pressOperator = (nextOp, displayObject = this.state.display) => {
+		let {current: curr, accum: accu, op: oper} = displayObject
+		console.log(nextOp, curr, accum, op);
 		if (currNum !== '0') {
 			this.setState({
-				display: Object.assign(this.state.display, {op})
+				display: Object.assign(
+					{ op, accum: accum.push(this.state.display.curr)})
 			}, () => {console.log(this.state.display.op)} )
 		} else {
 			this.state.history.push(this.state.display.current)
@@ -113,8 +139,8 @@ class App extends Component {
                         <div className='H2'>
 
                             <Vertical pressOperator={this.pressOperator}>
-                                <Button type='operator' className='Button' childClass='bg-red' opIcon={<IconFont color='white' icon='AC' />} keyValue='AC' pressOperator={this.pressOperator}/>
-                                <Button type='operator' className='Button' childClass='bg-red' opIcon={<IconFont color='white' icon='CE' />} keyValue='CE' pressOperator={this.pressOperator}/>
+                                <Button type='operator' className='Button' childClass='bg-red' opIcon={<IconFont color='white' icon='AC' />} keyValue='AC' pressOperator={this.aC}/>
+                                <Button type='operator' className='Button' childClass='bg-red' opIcon={<IconFont color='white' icon='CE' />} keyValue='CE' pressOperator={this.cE}/>
                             </Vertical>
                         </div>
 
