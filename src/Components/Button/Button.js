@@ -7,7 +7,7 @@ class Button extends Component {
 	constructor(props) {
 		super(props)
 		this.state={
-			
+
 		}
 	}
 
@@ -30,7 +30,7 @@ class Button extends Component {
 						onClick={
 							() => {
 								this.props.pressNumber(this.props.keyValue)
-								console.log(this.props.keyValue)
+								// console.log(this.props.keyValue)
 							}
 						}
 					>
@@ -46,12 +46,12 @@ class Button extends Component {
 
 Button.propTypes = {
 	opIcon: PropTypes.node,
-	keyValue: PropTypes.string,
+	keyValue: PropTypes.any,
 	childClass: PropTypes.string,
 	children: PropTypes.any,
 	type: PropTypes.string,
-	pressNumber: PropTypes.function,
-	pressOperator: PropTypes.function
+	pressNumber: PropTypes.any,
+	pressOperator: PropTypes.any,
 }
 
 Button.defaultProps = {}

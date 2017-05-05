@@ -3,14 +3,14 @@ import './DisplayHistory.css'
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const DisplayHistory = ({history}) => (
+const DisplayHistory = ({histVal}) => (
 	<div className="DisplayHistory">
-		<p>{((history[1]) ? history.join() : 0 ).toString()}</p>
+		<p>{histVal}</p>
 	</div>
 )
 
 DisplayHistory.propTypes = {
-	history: PropTypes.string
+	histVal: PropTypes.any
 }
 
 DisplayHistory.defaultProps = {}

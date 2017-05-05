@@ -1,8 +1,6 @@
 {
   "ecmaVersion": "7",
-  "libs": [
-    "browser"
-  ],
+  "libs": [],
   "loadEagerly": [],
   "dontLoad": [
     "node_modules/**"
