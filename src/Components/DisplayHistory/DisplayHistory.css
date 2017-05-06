@@ -1,17 +1,19 @@
 .DisplayHistory {
 	background: #ee5;
 	display: flex;
-	font-family: 'Digital-7 Italic';
-	font-size: 4vmin;
+	font-family: 'Digital-7 Mono';
+	font-size: 5vmin;
 	justify-content: flex-end;
 	align-items: center;
 	height: 34%;
 	width: 100%;
+
+	padding-right: 6px;
 }
 
 .DisplayHistory p {
 	line-height: 1.4;
 	margin: auto;
-	padding: 0 12px 0 0;
+	/*padding: 0 12px 0 0;*/
 	width: 100%;
 }

@@ -1,5 +1,6 @@
-// <editor-fold desc=''> //
 import React, {Component} from 'react'
+
+// <editor-fold desc='IMPORTS'> //
 import DigitalDisplay from './Components/DigitalDisplay'
 import DisplayCurrent from './Components/DisplayCurrent'
 import DisplayHistory from './Components/DisplayHistory'
@@ -28,35 +29,45 @@ class App extends Component {
     }
 
 // =============== Display Handlers =============== //
-// <editor-fold desc=''> //
+// <editor-fold desc='DISPLAY'> //
 
-	updateCurrentDisplayValue = (input, current_value = this.state.curr_val) => {
-		if (this.state.regex_op.test(current_value)) {
-			this.replaceCurrentValue(input)
-		}
-	}
+	// updateCurrentDisplayValue = (input, current_value = this.state.curr_val) => {
+	// 	if (this.state.regex_op.test(current_value)) {
+	// 		this.replaceCurrentValue(input)
+	// 	}
+	// }
 	replaceCurrentValue = (new_value, cv = this.state.curr_val) => {
 		if (this.state.is_totaled) {
-			this.dismissTotal()
-			this.replaceCurrentValue(new_value)
-			return
+			this.dismissAndReplaceTotal(new_value)
+		} else {
+			this.setState({curr_val: new_value})
 		}
 	}
-	addToCurrentValue = (input, current_value = this.state.curr_val) => {
-		this.setState({
-			curr_val: [current_value, input].toString(),
-		}, () => {
-			console.log('DISPLAY UPDATED TO: ', this.state.curr_val.toString())
-		})
+	addToCurrentValue = (input, cv = this.state.curr_val) => {
+		if (cv === '+' || cv === '-' || cv === '*' || cv === '/') {
+			this.setState((state, props) => {
+				return {
+					curr_val: [cv, input].toString(),
+					hist_arr: state.hist_arr.push(state.curr_val) }
+				}
+			)
+		} else {
+			this.setState({
+				curr_val: [cv, input].join(""),
+			}, () => {
+				console.log('DISPLAY UPDATED TO: ', this.state.curr_val.toString())
+			})
+		}
 	}
 
 // </editor-fold> //
 // =============== History Methods =============== //
-// <editor-fold desc=''> //
+// <editor-fold desc='HISTORY'> //
 
-	updateHistoryArray = (next_step = this.state.curr_val) => {
+	updateHistoryArray = (next_step) => {
+		let new_history = this.state.hist_arr.concat(next_step)
 		this.setState({
-			hist_arr: this.state.hist_arr.push(next_step)
+			hist_arr: new_history
 		}, () => {
 				console.log('updateHistoryArray(): history array updated')
 			}
@@ -84,43 +95,46 @@ class App extends Component {
 	}
 
 // </editor-fold> //
-// =============== Button Handlers ===============//
-
-
+// =============== Button Handlers =============== //
+// <editor-fold desc='BUTTON'> //
+	seperateCurrentValueFromOperator = (cv = this.state.curr_val) => {
+			let digits = cv.slice(0,-1)
+			console.log(digits)
+			let operator = cv.slice(-1)
+			console.log(operator)
+			return [digits, operator]
+	}
     pressNumber = (input_number) => {
-		// this.updateHistoryArray()
 		if (this.state.is_totaled) {
-			this.setState({
-				is_totaled: false,
-				hist_arr: [],
-				curr_val: input_number,
-			})
-			 // update hist_arr with ttl value
-			// view.html(input_number) // replace ttl w/ new input_number in the display
-			return // terminate handler early
+			this.dismissAndReplaceTotal(input_number)
 		}
 		else if (this.state.regex_op.test(this.state.curr_val)) {
-			// if operator is displayed
-			// send current display value to history, replace it with new value
-			this.updateHistoryArray(this.state.curr_val)
-			this.setState({curr_val : input_number})
-			return
+			if (this.state.curr_val.length > 1) {
+console.log(this.seperateCurrentValueFromOperator())
+				this.updateHistoryArray(this.seperateCurrentValueFromOperator())
+			} else {
+				this.updateHistoryArray(this.state.curr_val)
+				this.replaceCurrentValue(input_number)
+			}
+		}
+		else if (this.state.curr_val === '0') {
+			this.replaceCurrentValue(input_number)
 		}
 		else {
 			this.addToCurrentValue(input_number)
-			return
 		}
 	}
-
 	pressOperator = (operator, cv = this.state.curr_val) => {
 
 		if (cv === '+' || cv === '-' || cv === '*' || cv === '/') {
-
-		} else if (this.state.regex_op.test(this.state.curr_val)) {
+			this.setState({curr_val: operator});
+		} else if (!this.state.regex_op.test(this.state.curr_val)) {
+			// this.addToCurrentValue(operator)
+			// let nextSteps = [cv, operator]
 			this.setState((state, props) => {
 				return {
 					curr_val: operator,
-					hist_arr: state.hist_arr.push(state.curr_val)
+					hist_arr: state.hist_arr.concat(cv)
 				}
 			})
 			console.log('pressOperator: ', this.state.curr_val, this.state.hist_arr)
@@ -128,18 +142,23 @@ class App extends Component {
 			this.addToCurrentValue(operator)
 		}
 	}
-
+	decimalToggle = () => {
+		this.setState(
+			(this.state.regex_dot.test(this.state.curr_val)) ?
+			{curr_val: this.state.curr_val.slice(0, -1)} :
+			{curr_val: this.state.curr_val.concat('.')}
+		)
+	}
     aC = () => { // 'AC' - all clear - re-initialize calculator state
 		this.setState({
 			hist_arr: [],
-			hist_val: "",
+			hist_val: '0',
 			last_arr: [],
 			last_val: "",
-			curr_val: '',
+			curr_val: '0',
 			is_totaled: false
 		})
 	}
-
 	cE = () => { // 'CE' - clear entry - re-initialize current value only
 		this.setState(
 			(this.state.hist_arr.length <= 1) ?
@@ -147,7 +166,6 @@ class App extends Component {
 			{curr_val: ''}
 		)
 	}
-
 	eQ = () => { // '=' - return result
 		if (this.state.is_totaled) return
 
@@ -164,6 +182,10 @@ class App extends Component {
 		})
 		console.log('TOTAL', total, '\n === \n', this.state)
 	}
+
+	// </editor-fold> //
+// =============== Total Handlers =============== //
+// <editor-fold desc='TOTAL'> //
 
 	calculateTotal = (historyArray = this.state.hist_arr) => {
 		let next_operator = ""
@@ -191,7 +213,7 @@ class App extends Component {
 					next_operator = ''
 					break
 					default :
-					console.error('calculateTotal(): function error - no operator present');
+					console.error('calculateTotal(): function error - no operator present')
 				}
 			}
 			return accumulator
@@ -199,22 +221,17 @@ class App extends Component {
 		return (total.length > 20) ? "chill, bro... jeez." : total.toString()
 		// return total.toString()
 	}
-
-	dismissTotal = () => {
+	dismissAndReplaceTotal = (replacement = '0') => {
 		this.setState({
 			is_totaled: false,
 			hist_arr: [],
 			curr_val: '',
+		}, () => {
+			this.setState({curr_val: replacement})
 		})
 	}
 
-	decimalToggle = () => {
-		this.setState(
-			(this.state.regex_dot.test(this.state.curr_val)) ?
-			{curr_val: this.state.curr_val.slice(0, -1)} :
-			{curr_val: this.state.curr_val.concat('.')}
-		)
-	}
+	// </editor-fold> //
 
     render() {
         return (
