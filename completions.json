@@ -1,0 +1,173 @@
+{
+  "components": {
+    "Button": {
+      "attributes": [
+        "opIcon",
+        "keyValue",
+        "childClass",
+        "children",
+        "type",
+        "pressNumber",
+        "pressOperator"
+      ],
+      "props": {
+        "opIcon": {
+          "type": {
+            "name": "node"
+          },
+          "required": false,
+          "description": ""
+        },
+        "keyValue": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": ""
+        },
+        "childClass": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": ""
+        },
+        "children": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": ""
+        },
+        "type": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": ""
+        },
+        "pressNumber": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": ""
+        },
+        "pressOperator": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": ""
+        }
+      }
+    },
+    "DigitalDisplay": {
+      "attributes": [
+        "children"
+      ],
+      "props": {
+        "children": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": ""
+        }
+      }
+    },
+    "DisplayCurrent": {
+      "attributes": [
+        "currVal"
+      ],
+      "props": {
+        "currVal": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": ""
+        }
+      }
+    },
+    "DisplayHistory": {
+      "attributes": [
+        "histVal"
+      ],
+      "props": {
+        "histVal": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": ""
+        }
+      }
+    },
+    "Horizontal": {
+      "attributes": [
+        "children"
+      ],
+      "props": {
+        "children": {
+          "type": {
+            "name": "node"
+          },
+          "required": true,
+          "description": ""
+        }
+      }
+    },
+    "IconFont": {
+      "attributes": [
+        "icon",
+        "color"
+      ],
+      "props": {
+        "icon": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": ""
+        },
+        "color": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": ""
+        }
+      }
+    },
+    "Keypad": {
+      "attributes": [
+        "children"
+      ],
+      "props": {
+        "children": {
+          "type": {
+            "name": "node"
+          },
+          "required": false,
+          "description": ""
+        }
+      }
+    },
+    "Vertical": {
+      "attributes": [
+        "children"
+      ],
+      "props": {
+        "children": {
+          "type": {
+            "name": "node"
+          },
+          "required": true,
+          "description": ""
+        }
+      }
+    },
+    "App": {}
+  }
+}

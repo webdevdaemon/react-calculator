@@ -1,7 +1,8 @@
 {
+	"parser": "babel-eslint",
 	"presets": [
 		"latest",
-		"es2015",
-		"react"
+		"react",
+		"babel"
 	]
 }

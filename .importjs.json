@@ -1,0 +1,6 @@
+{
+	"lookupPaths": [
+		"./src/Components",
+		"./src"
+	]
+}

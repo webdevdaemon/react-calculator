@@ -5,17 +5,17 @@ import PropTypes from "prop-types"
 
 class DisplayCurrent extends React.Component {
 	render() {
-		let currentValue = this.props.currVal
+		let dis_val = this.props.displayValue
 		return (
 			<div className="DisplayCurrent">
-				<p>{currentValue.toString()}</p>
+				<p>{dis_val}</p>
 			</div>
 		)
 	}
 }
 
 DisplayCurrent.propTypes = {
-	currVal: PropTypes.any,
+	displayValue: PropTypes.string,
 }
 
 DisplayCurrent.defaultProps = {}
