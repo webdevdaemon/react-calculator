@@ -52,10 +52,10 @@ div {
 
 .bg-grey 	{ background: #444; color: white; }
 .bg-black 	{ background: black; /* color: white; */ }
-.bg-sky     { background: skyblue; /* color: black; */ }
-.bg-pink 	{ background: hotpink; /* color: black; */ }
-.bg-blue 	{ background: #0074d9; /* color: white; */ }
-.bg-magenta { background: #f012be; /* color: white; */ }
+.bg-plus     { background: #3D9970; /* color: black; */ }
+.bg-minus 	{ background: #68C8FF; /* color: black; */ }
+.bg-multiply 	{ background: #C64547; /* color: white; */ }
+.bg-divide { background: #7723FF; /* color: white; */ }
 .bg-red     { background: #ff4136; /* color: white; */ }
 .bg-green   { background: #2ecc40; /* color: white; */ }
 

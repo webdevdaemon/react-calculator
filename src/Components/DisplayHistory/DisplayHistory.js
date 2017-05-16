@@ -3,17 +3,28 @@ import './DisplayHistory.css'
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const DisplayHistory = ({historyValue}) => (
+const DisplayHistory = ({historyValue, previousHistory, revealPreviousHistory}) => (
 	<div className="DisplayHistory">
+		<p className="previous-history">
+			{
+				(historyValue === 'GRAND TOTAL') ?
+				(<p>{previousHistory}</p>) :
+				''
+			}
+		</p>
 		<p>{historyValue}</p>
 	</div>
 )
 
 DisplayHistory.propTypes = {
-	historyValue: PropTypes.string
+	historyValue: PropTypes.string,
+	previousHistory: PropTypes.string,
+	revealPreviousHistory: PropTypes.func,
 }
 
-DisplayHistory.defaultProps = {}
+DisplayHistory.defaultProps = {
+	previousHistory: ''
+}
 
 
 export default DisplayHistory

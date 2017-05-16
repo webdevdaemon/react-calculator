@@ -3,7 +3,7 @@
 	display: flex;
 	font-family: 'Digital-7 Mono';
 	font-size: 5vmin;
-	justify-content: flex-end;
+	justify-content: space-between;
 	align-items: center;
 	height: 34%;
 	width: 100%;
@@ -16,4 +16,8 @@
 	margin: auto;
 	/*padding: 0 12px 0 0;*/
 	width: 100%;
+}
+
+.previous-history {
+	text-align: left;
 }

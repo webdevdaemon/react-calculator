@@ -5,10 +5,10 @@ import PropTypes from "prop-types"
 
 class DisplayCurrent extends React.Component {
 	render() {
-		let dis_val = this.props.displayValue
 		return (
 			<div className="DisplayCurrent">
-				<p>{dis_val}</p>
+				<p className='negative'>{(this.props.stateObj.is_negative) ? '-' : ''}</p>
+				<p>{this.props.displayValue}</p>
 			</div>
 		)
 	}
@@ -16,6 +16,7 @@ class DisplayCurrent extends React.Component {
 
 DisplayCurrent.propTypes = {
 	displayValue: PropTypes.string,
+	stateObj: PropTypes.object,
 }
 
 DisplayCurrent.defaultProps = {}

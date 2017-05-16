@@ -6,9 +6,7 @@ import PropTypes from 'prop-types'
 class Button extends Component {
 	constructor(props) {
 		super(props)
-		this.state={
-
-		}
+		this.state = {}
 	}
 
 	render() {
@@ -16,23 +14,15 @@ class Button extends Component {
 			<div className="Button">
 				{
 					this.props.type === 'operator' ?
-
-						<div className={`ButtonOp ${this.props.childClass}`}
-							onClick={
-								() => {
-									this.props.pressOperator(this.props.keyValue)
-								}
-							}
+						<div
+							className={`ButtonOp ${this.props.childClass}`}
+							onClick={() => {this.props.pressOperator(this.props.keyValue)}}
 						>
-							{this.props.opIcon}</div> :
-
-					<div className={`ButtonNum ${this.props.childClass}`}
-						onClick={
-							() => {
-								this.props.pressNumber(this.props.keyValue)
-								// console.log(this.props.keyValue)
-							}
-						}
+							{this.props.opIcon}
+						</div> :
+					<div
+						className={`ButtonNum ${this.props.childClass}`}
+						onClick={() => {this.props.pressNumber(this.props.keyValue)}}
 					>
 						<span>
 							{this.props.keyValue}

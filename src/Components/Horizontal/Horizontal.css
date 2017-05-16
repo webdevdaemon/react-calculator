@@ -1,5 +1,6 @@
 .Horizontal {
 	display: flex;
+	flex-direction: row-reverse;
 	justify-content: space-around;
 	align-items: center;
 	height: 100%;
