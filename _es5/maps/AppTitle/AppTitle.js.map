@@ -1,0 +1,14 @@
+)]}
+{
+ "version": 3,
+ "sources": "/Users/cm/Desktop/git-main/freeCodeCampProjects/calcJS/src/AppTitle/AppTitle.js",
+ "file": "/Users/cm/Desktop/git-main/freeCodeCampProjects/calcJS/_es5/AppTitle/AppTitle.js",
+ "sourceRoot": "",
+ "names": [
+  "AppTitle",
+  "props",
+  "mainTitle",
+  "subTitle"
+ ],
+ "mappings": ";;;;;;AAAA;;AAEA;;;;;;AAEA,IAAMA,WAAW,SAAXA,QAAW,CAACC,KAAD;AAAA,QAChB;AAAA;AAAA,IAAK,WAAU,UAAf;AACC;AAAA;AAAA;AAAKA,SAAMC;AAAX,GADD;AAEC;AAAA;AAAA;AAAKD,SAAME;AAAX;AAFD,EADgB;AAAA,CAAjB;;kBASeH,Q"
+}

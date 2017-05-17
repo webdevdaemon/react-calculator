@@ -1,0 +1,48 @@
+.AppTitle {
+	background: transparent;
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	height: 15%;
+	padding: 24px;
+}
+
+.AppTitle h2 {
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	font-family: 'Bungee';
+	font-size: 4vmax;
+	margin: 10px 0 0 0;
+}
+
+.AppTitle h2 .the-u {
+	color: rgba(240, 18, 190, 1.00);
+	font-size: 5vmax;
+	margin: 0;
+	margin-bottom: -3px;
+}
+
+.AppTitle h2 .the-8 {
+	color: rgba(240, 18, 190, 1.00);
+	font-size: 5vmax;
+	margin: 0;
+	margin-bottom: -3px;
+}
+
+.AppTitle h2 span {
+	text-shadow: 2px 2px 0 black;
+	color: rgba(240, 18, 190, 1.00);
+	margin: 0;
+	margin-bottom: -3px;
+}
+
+.AppTitle h4 {
+	background: #fff;
+	border-radius: 5px;
+	color: rgba(119, 35, 255, 1.00);
+	margin: 0;
+	padding: 5px 10px;
+}

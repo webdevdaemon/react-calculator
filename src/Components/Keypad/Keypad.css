@@ -1,8 +1,7 @@
 .Keypad {
-	border: 5px solid white;
+	border: 5px solid #a5acaf;
 	box-sizing: border-box;
-
-	background: #eee;
+	background: #a5acaf;
 	display: flex;
 	justify-content: center;
 	height: 80%;
